@@ -12,6 +12,6 @@ namespace Bloggie.Web.Repositories
 
         Task<BlogPost?> UpdateAsync(BlogPost blogPost);
 
-        Task<BlogPost?> DeleteAsynch(Guid id);
+        Task<BlogPost?> DeleteAsync(Guid id);
     }
 }

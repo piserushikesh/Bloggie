@@ -12,30 +12,47 @@
 
 
 <div class="container py-5">
-    <table class="table">
-        <thead>
-            <tr>
-                <td>Id</td>
-                <td>Heading</td>
-                <td>Tags</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var blogpost in Model)
-            {
+    @if( Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@blogpost.Id</td>
-                    <td>@blogpost.Heading</td>
-                    <td>
-                        <div class="d-flex">
-                            @foreach(var tag in blogpost.Tags)
-                            {
-                                <span class="badge bg-secondary me-1">@tag.Name</span>
-                            }
-                        </div>
-                    </td>
+                    <td>Id</td>
+                    <td>Heading</td>
+                    <td>Tags</td>
+                    <td> </td>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var blogpost in Model)
+                {
+                    <tr>
+                        <td>@blogpost.Id</td>
+                        <td>@blogpost.Heading</td>
+                        <td>
+                            <div class="d-flex">
+                                @foreach (var tag in blogpost.Tags)
+                                {
+                                    <span class="badge bg-secondary me-1">@tag.Name</span>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <a asp-area=""
+                               asp-controller="AdminBlogPosts"
+                               asp-action="Edit"
+                               asp-route-id="@blogpost.Id">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Blog Post Found !</p>
+    }
+
 </div>
